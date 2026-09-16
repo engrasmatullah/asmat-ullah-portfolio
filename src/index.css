@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   THEME TOKENS
+   Two palettes, one dark (default) and one light, switched by toggling
+   data-theme on <html> (see src/context/ThemeContext.jsx).
+   Everything else in the app reads these through Tailwind color tokens
+   (core-black, paper-high, signal-cyan, etc. — see tailwind.config.js).
+   ========================================================================== */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces — a deep blue-slate rather than flat black, so glows have
+     something to sit on top of. */
+  --bg-base: #070b12;
+  --bg-surface: #101928;
+  --bg-surface-alt: #16202f;
+  --border-color: rgba(148, 163, 184, 0.14);
+
+  /* Text */
+  --text-high: #eef2f9;
+  --text-mid: #9aa8bd;
+  --text-low: #616e82;
+
+  /* Accents: cool signal colors + one warm "solder" accent for emphasis */
+  --accent-blue: #3b82f6;
+  --accent-cyan: #22d3ee;
+  --accent-violet: #8b6bf0;
+  --accent-amber: #f5a623;
+
+  /* Background-scene specific */
+  --scene-line: rgba(59, 130, 246, 0.35);
+  --scene-line-soft: rgba(34, 211, 238, 0.16);
+  --scene-glow-a: rgba(59, 130, 246, 0.16);
+  --scene-glow-b: rgba(139, 107, 240, 0.12);
+  --scene-vignette: rgba(5, 8, 13, 0.55);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg-base: #f3f5fa;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #eaeef5;
+  --border-color: rgba(15, 23, 42, 0.1);
+
+  --text-high: #0f172a;
+  --text-mid: #4b5670;
+  --text-low: #7c869c;
+
+  --accent-blue: #2563eb;
+  --accent-cyan: #0891b2;
+  --accent-violet: #7c3aed;
+  --accent-amber: #c2760a;
+
+  --scene-line: rgba(37, 99, 235, 0.16);
+  --scene-line-soft: rgba(8, 145, 178, 0.1);
+  --scene-glow-a: rgba(37, 99, 235, 0.08);
+  --scene-glow-b: rgba(124, 58, 237, 0.06);
+  --scene-vignette: rgba(255, 255, 255, 0.35);
+
+  color-scheme: light;
+}
+
+/* ---------- Base page styles ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-high);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+::selection {
+  background-color: var(--accent-blue);
+  color: var(--bg-base);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-alt);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Shared helpers ---------- */
+
+.section-padding {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.section-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-cyan);
+}
+
+.grid-background {
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* A warm "solder" highlight for one deliberate word or phrase per heading —
+   used sparingly (Hero + one or two section titles), not on every heading. */
+.text-highlight {
+  color: var(--accent-amber);
+}
+
+/* Glassy card surface used by the fixed-background sections so the scene
+   behind them stays visible through the page. */
+.glass-surface {
+  background: color-mix(in srgb, var(--bg-surface) 78%, transparent);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}

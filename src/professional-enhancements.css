@@ -1,0 +1,41 @@
+
+/* Professional recruiter-focused visual enhancements.
+   Import this file after your main stylesheet if desired. */
+
+:root {
+  --pro-bg: #0a0f14;
+  --pro-surface: #111820;
+  --pro-border: rgba(255,255,255,.10);
+  --pro-text: #f5f7fa;
+  --pro-muted: #9aa6b2;
+  --pro-accent: #38bdf8;
+}
+
+.pro-glass {
+  background: rgba(17, 24, 32, .62);
+  border: 1px solid var(--pro-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pro-focus {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.pro-focus:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, .35);
+  box-shadow: 0 16px 40px rgba(0,0,0,.24);
+}
+
+.pro-muted { color: var(--pro-muted); }
+.pro-accent { color: var(--pro-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

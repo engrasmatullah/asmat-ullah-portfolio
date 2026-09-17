@@ -142,27 +142,28 @@ function Hero() {
           <FadeInText delay={0.6} className="flex flex-row gap-3 mb-5">
             <button
               onClick={() => scrollToSection("journey")}
-              className="px-3 py-3 h-12 text-sm rounded-md bg-signal-blue text-white font-medium hover:bg-signal-cyan hover:text-core-black transition-colors duration-200 shadow-glowBlue"
+              className="px-2 sm:px-3 py-3 h-12 text-xs sm:text-sm rounded-md bg-signal-blue text-white font-medium hover:bg-signal-cyan hover:text-core-black transition-colors duration-200 shadow-glowBlue whitespace-nowrap"
             >
               Explore My Journey
             </button>
 
             <button
               onClick={() => scrollToSection("projects")}
-              className="px-3 py-3 h-12 text-sm rounded-md border border-core-line text-paper-high font-medium hover:border-signal-cyan hover:text-signal-cyan transition-colors duration-200"
+              className="px-2 sm:px-3 py-3 h-12 text-xs sm:text-sm rounded-md border border-core-line text-paper-high font-medium hover:border-signal-cyan hover:text-signal-cyan transition-colors duration-200 whitespace-nowrap"
             >
               View My Projects
             </button>
-            <button
-              onClick={() => scrollToSection("journey")}
-              className="px-3 py-3 h-12 flex flex-row gap-2 text-sm rounded-md bg-signal-blue text-white font-medium hover:bg-signal-cyan hover:text-core-black transition-colors duration-200 shadow-glowBlue"
+            <a
+              href="/Asmat%20Ullah%20CV.pdf"
+              download="Asmat Ullah CV.pdf"
+              className="px-2 sm:px-3 py-3 h-12   flex flex-row items-center gap-1 sm:gap-2 text-xs sm:text-sm rounded-md bg-signal-blue text-white font-medium hover:bg-signal-cyan hover:text-core-black transition-colors duration-200 shadow-glowBlue whitespace-nowrap"
             >
               <span>Download Resume</span>
 
               <span>
                 <FiDownload />
               </span>
-            </button>
+            </a>
           </FadeInText>
 
           <FadeInText delay={0.75} className="flex items-center gap-5">
